@@ -17,6 +17,8 @@ while left < right:
     left += 1
     right -= 1
 
+end = time.time()
+print(f"{end - start:.5f} sec")
 print(text)
 
 
