@@ -1,5 +1,23 @@
 from typing import List
+import time
 
+nums = [2, 7, 11, 15]
+target = 9
+nums_map = {}
+start = time.time()
+for i, n in enumerate(nums):
+    nums_map[n] = i
+
+for i, n in enumerate(nums):
+    complement = target - n
+    if complement in nums_map:
+        j = nums_map[complement]
+        if i < j:
+            index = [i, j]
+
+end = time.time()
+print(index)
+print(f"{end - start:.10f} sec")
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
