@@ -1,5 +1,23 @@
 from typing import List
+import time
+start = time.time()
+nums = [-1, 0, 1, 2, -1, -4]
+nums.sort()
+results = []
 
+for i in range(len(nums)):
+    for j in range(i+1, len(nums)):
+        for k in range(j+1, len(nums)):
+            total_sum = nums[i] + nums[j] + nums[k]
+            if total_sum == 0:
+                result = [nums[i], nums[j], nums[k]]
+                result.sort()
+                if result not in results:
+                    results.append(result)
+
+end = time.time()
+print(results)
+print(f"{end - start:.10f} sec")
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:

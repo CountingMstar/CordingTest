@@ -1,5 +1,10 @@
 from typing import List
 
+nums = [1, 4, 3, 2]
+nums.sort()
+print(nums)
+print(sum(nums[::2]))
+
 
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:

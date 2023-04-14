@@ -1,5 +1,6 @@
 from typing import List
 
+input = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 
 class Solution:
     def trap(self, height: List[int]) -> int:
@@ -23,3 +24,6 @@ class Solution:
 
             stack.append(i)
         return volume
+
+volume = Solution().trap(input)
+print(volume)

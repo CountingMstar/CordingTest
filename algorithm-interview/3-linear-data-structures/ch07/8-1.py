@@ -2,44 +2,27 @@ from typing import List
 import time
 
 input = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-input = [2, 0, 1, 0, 3]
-input = [1, 0, 3]
+# input = [2, 0, 1, 0, 3]
+volume = 0
+left, right = 0, len(input)-1
+left_max = input[left]
+right_max = input[right]
 
-print(input.index(max(input)))
+while left < right:
+    left_max = max(left_max, input[left])
+    right_max = max(right_max, input[right])
 
-max_index = input.index(max(input))
-window = []
-window.append(input[max_index])
-water = 0 
-#left
-for i in range(max_index):
-    if len(window) == 2:
-        window.remove(window[0])
-    index = max_index - (i + 1)
-    value = input[index]
-    window.append(value)
-    print(window)
+    if left_max <= right_max:
+        v = left_max - input[left]
+        volume += v
+        left += 1
+    else:
+        v = right_max - input[right]
+        volume += v
+        right -= 1
 
-    if window[0] < window[1]:
-        wall_index = index + 1
-        print('=============')
-        print(window[1])
-        print(input[wall_index])
-        while True:
-            print('*******')
-            water += (window[1] - input[wall_index])
-            wall_index = index + 1
-            print(window[1])
-            print(input[wall_index])
-            if window[1] > input[wall_index]:
-                break
-
-print('#######')
-
-
-print(water)
-    
-
+print('############')
+print(volume)
 
 
 
@@ -62,3 +45,6 @@ class Solution:
                 volume += right_max - height[right]
                 right -= 1
         return volume
+
+volume = Solution().trap(input)
+print(volume)

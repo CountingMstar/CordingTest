@@ -1,5 +1,21 @@
 import sys
 from typing import List
+import time
+start = time.time()
+
+prices = [7, 1, 5, 3, 6, 4]
+min_price = sys.maxsize
+max_profit = -sys.maxsize
+print(min_price)
+
+for price in prices:
+    min_price = min(min_price, price)
+    profit = price - min_price
+    max_profit = max(max_profit, profit)
+
+end = time.time()
+print(max_profit)
+print(f"{end - start:.10f} sec")
 
 
 class Solution:
