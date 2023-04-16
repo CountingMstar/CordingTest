@@ -1,5 +1,9 @@
 from typing import List
+import time
 
+"""
+Linked list(연결리스트) 만들기
+"""
 class Node:
     def __init__(self, data):
         self.data = data
@@ -22,6 +26,7 @@ class LinkedList:
 
 I = LinkedList()
 input = [1, 2]
+input = [1, 2, 2, 1]
 
 for i in input:
     I.append(i)
@@ -30,6 +35,33 @@ print(I.head.data)
 print(I.head.next.data)
 print(I.head.next.next.data)
 
+"""
+팰린드롬 인지 판별
+"""
+start = time.time()
+def isPalindrome(head):
+    # q == list 자료형
+    q: List = []
+    next_node = head.next
+
+    # 연결리스트를 리스트로 변환
+    while next_node is not None:
+        q.append(next_node.data)
+        next_node = next_node.next
+    print(q)
+
+    # pop(0) == 리스트 맨 앞원소 빼오기
+    # pop() or pop(1) == 리스트 맨 뒷원소 빼오기
+    while len(q) > 1:
+        if q.pop(0) != q.pop():
+            return False
+        
+    return True
+
+result = isPalindrome(I.head)
+end = time.time()
+print(result)
+print(f"{end - start:.20f} sec")
 
 #########################################
 # Definition for singly-linked list.
