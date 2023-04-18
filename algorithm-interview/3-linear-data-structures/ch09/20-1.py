@@ -14,3 +14,7 @@ class Solution:
             elif not stack or table[char] != stack.pop():
                 return False
         return len(stack) == 0
+
+result = Solution()
+input = ['(', ')', '[', ']']
+print(result.isValid(input))
