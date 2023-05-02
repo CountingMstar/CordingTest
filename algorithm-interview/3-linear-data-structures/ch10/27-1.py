@@ -1,7 +1,23 @@
 import heapq
 from typing import List
 
+"""
+heap
+"""
 
+heap = []
+heapq.heappush(heap, 4)
+heapq.heappush(heap, 1)
+heapq.heappush(heap, 10)
+heapq.heappush(heap, 3)
+heapq.heappush(heap, -8)
+print(heap)
+
+for i in range(5):
+    print(heapq.heappop(heap))
+    print(heap)
+
+############################################
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -30,3 +46,8 @@ class Solution:
                 heapq.heappush(heap, (result.next.val, idx, result.next))
 
         return root.next
+
+
+input = [[1, 4, 5], [1, 3, 4], [2, 6]]
+result = Solution()
+result.mergeKLists(input)

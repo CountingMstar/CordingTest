@@ -15,7 +15,6 @@ class Stack:
         self.last = self.last.next
         return item
 
-
 stack = Stack()
 stack.push(1)
 stack.push(2)
