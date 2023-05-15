@@ -16,3 +16,7 @@ class Solution:
                 count += freqs[char]
 
         return count
+
+
+solution = Solution()
+solution.numJewelsInStones('j', 's')
