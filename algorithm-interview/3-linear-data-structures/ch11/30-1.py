@@ -12,4 +12,12 @@ class Solution:
             # 현재 문자의 위치 삽입
             used[char] = index
 
+            print(used)
+
         return max_length
+
+
+s = "abcabcbb"
+solution = Solution()
+count = solution.lengthOfLongestSubstring(s)
+print(count)
