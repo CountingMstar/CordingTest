@@ -7,27 +7,20 @@ class Solution:
     def networkDelayTime(times: List[List[int]], N: int, K: int) -> int:
 
         graph = collections.defaultdict(list)
-
+        
         # 그래프 인접 리스트 구성
         for u, v, w in times:
             graph[u].append((v, w))
 
-        print('1111111')
-        print(graph)
-
         # 큐 변수: [(소요 시간, 정점)]
         Q = [(0, K)]
         dist = collections.defaultdict(int)
-        print('2222222')
-        print(dist)
 
         # 우선 순위 큐 최소값 기준으로 정점까지 최단 경로 삽입
         while Q:
             time, node = heapq.heappop(Q)
             if node not in dist:
                 dist[node] = time
-                print('33333333')
-                print(dist)
                 for v, w in graph[node]:
                     alt = time + w
                     heapq.heappush(Q, (alt, v))
