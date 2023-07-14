@@ -26,7 +26,7 @@ def dfs(x, y, num):
         dfs(x-1, y, num)
         dfs(x, y-1, num)
         dfs(x+1, y, num)
-        dfs(x, y+1, num)
+        dfs(x, y+1, num )
 
         return True
     return False
