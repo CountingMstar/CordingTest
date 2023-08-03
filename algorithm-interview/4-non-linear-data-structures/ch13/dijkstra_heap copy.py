@@ -4,17 +4,29 @@ import sys
 input = sys.stdin.readline
 INF = int(1e9)
 
-n, m = map(int, input().split())
-start = int(input())
+# n, m = map(int, input().split())
+# start = int(input())
+n, m = 5, 8
+start, end = 1, 5
 
 graph = [[] for i in range(n+1)]
 distance = [INF] * (n+1)
+past = [0] * (n+1)
+print(past)
+print(distance)
 
-for _ in range(m):
-    a, b, c = map(int, input().split())
+# for _ in range(m):
+#     a, b, c = map(int, input().split())
+#     graph[a].append((b, c))
+
+g = [[1,2,2],[1,3,3],[1,4,1],[1,5,10],[2,4,2],[3,4,1],[3,5,1],[4,5,3]]
+for i in range(m):
+    a, b, c = g[i]
     graph[a].append((b, c))
 
-def dijkstra(start):
+print(graph)
+
+def dijkstra(start, end):
     q = []
 
     heapq.heappush(q, (0, start))
@@ -26,19 +38,26 @@ def dijkstra(start):
         if distance[now] < dist:
             continue
 
-        for i in graph[now]:
-            cost = dist + i[1]
+        for next, next_dist in graph[now]:
+            cost = dist + next_dist
 
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
+            if cost < distance[next]:
+                distance[next] = cost
+                past[next] = now
+                heapq.heappush(q, (cost, next))
 
-dijkstra(start)
+dijkstra(start, end)
 
-for i in range(1, n+1):
-    if distance[i] == INF:
-        print('INFINITY')
+ans = []
+tmp = end
+while tmp != start:
+    ans.append(str(tmp))
+    tmp = past[tmp]
 
-    else:
-        print(distance[i])
+ans.append(str(start))
+ans.reverse()
+
+print(distance[end])
+print(len(ans))
+print(" ".join(ans))
 
