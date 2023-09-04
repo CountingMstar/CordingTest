@@ -2,7 +2,7 @@ import heapq
 import sys
 
 
-input = sys.stdin.readline
+input = sys.stdin.readline()
 INF = int(1e9)  # 무한
 
 # n: 노드의 개수, m: 간선의 개수
@@ -37,14 +37,7 @@ def dijkstra(start):
         if distance[now] < dist:
             continue    # 바로 다음 사이클로 넘어감
 
-        print('00000000000')
-        print(dist)
-        print(now)
-        print(graph[now])
-
         for i in graph[now]:
-            print('11111111111')
-            print(i)
             cost = dist + i[1]
 
             if cost < distance[i[0]]:
