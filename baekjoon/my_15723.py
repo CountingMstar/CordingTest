@@ -1,39 +1,39 @@
 import sys
 from collections import Counter
+from string import ascii_lowercase
 
-INF = sys.maxsize
-n1 = 3
-g1 = [['a','b'],['b','c'],['c','d']]
+# INF = sys.maxsize
+INF = int(1e9)
+# n1 = 3
+# G1 = [['a','b'],['b','c'],['c','d']]
+# n2 = 3
+# G2 = [['a','d'],['a','c'],['d','a']]
 
-alpha = []
-for g in g1:
-    if g[0] not in alpha:
-        alpha.append(g[0])
-    if g[1] not in alpha:
-        alpha.append(g[1])
-print('1111111111')
-print(alpha)
+input = sys.stdin.readline
+alpha = list(ascii_lowercase)
 num = len(alpha)
-
 graph = [[INF]*(num+1) for i in range(num+1)]
 
-for a in range(1,num+1):
-    for b in range(1,num+1):
-        if a == b:
-            graph[a][b] = 0
+n1 = int(input())
+for i in range(n1):
+    G = str(input())
+    g1, g2 = G[0], G[-2]
+    graph[alpha.index(g1)+1][alpha.index(g2)+1] = 1
 
-for g in g1:
-    g1, g2 = g[0], g[1]     
-    graph[alpha.index(g1)][alpha.index(g2)] = 1
-        
-print(graph)
 
 for k in range(1,num+1):
     for a in range(1,num+1):
         for b in range(1,num+1):
+            if a == b:
+                graph[a][b] = 0
             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
 
-print(graph)
 
-
-
+n2 = int(input())
+for g in range(n2):
+    G = str(input())
+    g1, g2 = G[0], G[-2]
+    if graph[alpha.index(g1)+1][alpha.index(g2)+1] == INF:
+        print('F')
+    else:
+        print('T')
