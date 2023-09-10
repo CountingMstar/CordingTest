@@ -1,5 +1,6 @@
 from collections import deque
 import sys
+import time
 
 input = sys.stdin.readline
 
@@ -10,6 +11,7 @@ N, M = map(int, input().split())
 graph = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1],[1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]
 # graph = [[1,0,1,1,1,1,1],[1,1,1,0,0,0,1],[1,0,0,0,0,0,1],[1,0,0,0,0,0,1],[1,0,0,0,0,0,1],[1,0,0,0,0,0,1],[1,1,1,1,1,1,1]]
 
+t1 = time.time()
 check = [[0]*M for i in range(N)]
 
 def bfs(graph,x,y,check):
@@ -17,7 +19,6 @@ def bfs(graph,x,y,check):
     dx = [-1,1,0,0]
     dy = [0,0,-1,1]
     q.append([x,y])
-    count = 1
 
     while True:
         if len(q) == 0:
@@ -41,10 +42,11 @@ def bfs(graph,x,y,check):
                     check[nx][ny] = min(check[nx][ny], ch + 1)
                 elif check[nx][ny] == 0 and check[nx][ny] != ch + 1:
                     check[nx][ny] += ch + 1
+    
+    return check[-1][-1]+1
 
 
-
-bfs(graph,0,0,check)
-
-print(check[-1][-1]+1)
+print(bfs(graph,0,0,check))
+t2 = time.time()
+print(t2-t1)
 
