@@ -6,6 +6,12 @@ input = sys.stdin.readline
 
 N, M = map(int, input().split())
 # graph = [list(map(int, input().split())) for _ in range(N)]
+
+N, M = map(int, input().split())
+graph = []
+
+for i in range(N):
+    graph.append(list(map(int, input())))
 # graph = [[1,0,1,1,1,1],[1,0,1,0,1,0],[1,0,1,0,1,1],[1,1,1,0,1,1]]
 # graph = [[1,1,0,1,1,0],[1,1,0,1,1,0],[1,1,1,1,1,1],[1,1,1,1,0,1]]
 graph = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1],[1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]

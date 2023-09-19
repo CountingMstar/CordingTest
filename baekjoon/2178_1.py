@@ -1,15 +1,15 @@
 from collections import deque
-import sys
+# import sys
 
-input = sys.stdin.readline
+# input = sys.stdin.readline
 
 N, M = map(int, input().split())
 graph = []
 
-# for i in range(N):
-#     graph.append(list(map(int, input().split())))
+for i in range(N):
+    graph.append(list(map(int, input())))
 
-graph = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1],[1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]
+# graph = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1],[1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]
 
 
 def bfs(x,y):
