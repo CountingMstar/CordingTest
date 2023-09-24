@@ -11,15 +11,7 @@ for i, j in relation:
     info.append(j)
 
 info = list(sorted(set(info)))
-print(info)
 graph = [[INF]*len(info) for i in range(len(info))]
-print(graph)
-
-print(N)
-print(M)
-print(relation)
-print(info)
-
 for a in range(N):
     for b in range(N):
         if a == b:
@@ -33,17 +25,9 @@ for k in range(N):
         for b in range(N):
             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
 
-print(graph[0])
-
 answer = 0
 for i in graph[0]:
     if i < INF and i > 0:
         answer += 1
 
 print(answer)
-
-
-
-
-
-
