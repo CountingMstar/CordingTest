@@ -3,6 +3,7 @@ import sys
 
 input = sys.stdin.readline
 N, K = map(int, input().split())
+visited = [0]*(100001)
 
 def bfs(start):
     q = deque()
@@ -15,9 +16,10 @@ def bfs(start):
         if k == K:
             print(n)
             break
-
-        q.append([k+1,n+1])
-        q.append([k-1,n+1])
-        q.append([2*k,n+1])
+        
+        next = [[k+1,n+1],[k-1,n+1],[2*k,n+1]]
+        for i in range(3):
+            if 0 <= next[i][0] <= 100001 and visited[next[i][0]] == 0:
+                q.append(next[i])
 
 bfs(N)
